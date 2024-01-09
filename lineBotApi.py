@@ -1,9 +1,13 @@
 from linebot import LineBotApi, WebhookHandler, exceptions
 from linebot.models import TextSendMessage, events
 from datetime import datetime
+from dotenv import load_dotenv
+from langchain.llms import OpenAI
 import netifaces
 import os
 import logging
+
+load_dotenv()
 
 # 讀取 LINE BOT API
 CHANNEL_ACCESS_TOKEN = os.environ.get("lineBotToken")
