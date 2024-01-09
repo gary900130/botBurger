@@ -1,7 +1,6 @@
 from linebot import LineBotApi, WebhookHandler, exceptions
 from linebot.models import TextSendMessage, events
 from dotenv import load_dotenv
-# from langchain import OpenAI
 from flask import Flask, request
 from openai import OpenAI
 import json
@@ -37,10 +36,10 @@ def linebot():
     messages=[
       {
         "role": "user",
-        "content": msg,
+        "content": msg + "，請使用繁體中文回答我。",
       }
     ],
-    model="gpt-3.5-turbo",
+    model = "gpt-3.5-turbo"
   )
   text_message = TextSendMessage(text=chat_completion.choices[0].message.content)
   line_bot_api.reply_message(tk,text_message)       # 回傳訊息
